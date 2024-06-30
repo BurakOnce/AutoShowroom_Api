@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>RealEstate_UI</RootNamespace>
+    <RootNamespace>AutoShowroom_UI</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
