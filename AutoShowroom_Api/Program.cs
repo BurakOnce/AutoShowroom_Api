@@ -6,6 +6,7 @@ using AutoShowroom_Api.Repositories.EmployeeRepositories;
 using AutoShowroom_Api.Repositories.PopularLocationRepositories;
 using AutoShowroom_Api.Repositories.ProductRepository;
 using AutoShowroom_Api.Repositories.ServiceRepository;
+using AutoShowroom_Api.Repositories.StatisticsRepositories;
 using AutoShowroom_Api.Repositories.WhoWeAreRepository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,7 @@ builder.Services.AddTransient<IServiceRepository, ServiceRepository>();
 builder.Services.AddTransient<IBottomGridRepository, BottomGridRepository>();
 builder.Services.AddTransient<IPopularLocationRepository, PopularLocationRepository>();
 builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddTransient<IStatisticsRepository, StatisticsRepository>();
 
 
 
