@@ -49,7 +49,7 @@ namespace AutoShowroom_Api.Repositories.WhoWeAreRepository
         {
             string query = "UPDATE WhoWeAreDetail SET Title=@title, Subtitle=@subtitle, Description1=@description1, Description2=@description2  WHERE WhoWeAreDetailId = @whoWeAreDetailId";
             var parameters = new DynamicParameters();
-            parameters.Add("@whoWeAreDetailId", updateWhoWeAreDetailDto.WhoWeAreDetailDtoId);
+            parameters.Add("@whoWeAreDetailId", updateWhoWeAreDetailDto.WhoWeAreDetailId);
             parameters.Add("@title", updateWhoWeAreDetailDto.Title);
             parameters.Add("@subtitle", updateWhoWeAreDetailDto.Subtitle);
             parameters.Add("@description1", updateWhoWeAreDetailDto.Description1);

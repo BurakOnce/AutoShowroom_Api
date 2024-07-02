@@ -26,7 +26,7 @@ namespace AutoShowroom_UI.ViewComponents.HomePage
                 var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
 
                 var value1 = JsonConvert.DeserializeObject<List<ResultWhoWeAreDetailDto>>(jsonData1);
-                var value2 = JsonConvert.DeserializeObject<List<ResultServiceDto>>(jsonData2);
+                var value2 = JsonConvert.DeserializeObject<List<ResultServicesDto>>(jsonData2);
 
                 ViewBag.Title = value1.Select(x => x.Title).FirstOrDefault();
                 ViewBag.Subtitle = value1.Select(x => x.Subtitle).FirstOrDefault();

@@ -1,6 +1,6 @@
-﻿namespace AutoShowroom_UI.Dtos.WhoWeAreDtos
+﻿namespace AutoShowroom_UI.Dtos.ServiceDtos
 {
-    public class ResultServiceDto
+    public class UpdateServiceDto
     {
         public int ServiceId { get; set; }
         public string ServiceName { get; set; }

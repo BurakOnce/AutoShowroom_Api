@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using AutoShowroom_Api.Dtos.CategoryDtos;
 using AutoShowroom_Api.Dtos.ServiceDtos;
 using AutoShowroom_Api.Models.DapperContext;
 
@@ -8,13 +7,15 @@ namespace AutoShowroom_Api.Repositories.ServiceRepository
     public class ServiceRepository : IServiceRepository
     {
         private readonly Context _context;
-        public ServiceRepository(Context context) { _context = context; }
-
-        public async void CreateService(CreateServiceDto serviceDto)
+        public ServiceRepository(Context context)
         {
-            string query = "insert into Services (ServiceName,ServiceStatus) values (@serviceName, @serviceStatus)";
+            _context = context;
+        }
+        public async Task CreateService(CreateServiceDto createServiceDto)
+        {
+            string query = "insert into Services (ServiceName,ServiceStatus) values (@serviceName,@serviceStatus)";
             var parameters = new DynamicParameters();
-            parameters.Add("@serviceName", serviceDto.ServiceName);
+            parameters.Add("@serviceName", createServiceDto.ServiceName);
             parameters.Add("@serviceStatus", true);
             using (var connection = _context.CreateConnection())
             {
@@ -22,18 +23,18 @@ namespace AutoShowroom_Api.Repositories.ServiceRepository
             }
         }
 
-        public async void DeleteService(int id)
+        public async Task DeleteService(int id)
         {
-            string query = "DELETE FROM Services WHERE ServiceId =@serviceId";
+            string query = "Delete From Services Where ServiceID=@serviceID";
             var parameters = new DynamicParameters();
-            parameters.Add("@serviceId", id);
+            parameters.Add("@serviceID", id);
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
         }
 
-        public async Task<List<ResultServiceDto>> GetAllServiceAsync()
+        public async Task<List<ResultServiceDto>> GetAllService()
         {
             string query = "Select * From Services";
             using (var connection = _context.CreateConnection())
@@ -45,9 +46,9 @@ namespace AutoShowroom_Api.Repositories.ServiceRepository
 
         public async Task<GetByIdServiceDto> GetService(int id)
         {
-            string query = "SELECT * From Services WHERE ServiceId=@serviceId";
+            string query = "Select * From Services Where ServiceID=@serviceID";
             var parameters = new DynamicParameters();
-            parameters.Add("@serviceId", id);
+            parameters.Add("@serviceID", id);
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<GetByIdServiceDto>(query, parameters);
@@ -55,17 +56,17 @@ namespace AutoShowroom_Api.Repositories.ServiceRepository
             }
         }
 
-        public async void UpdateService(UpdateServiceDto serviceDto)
+        public async Task UpdateService(UpdateServiceDto updateServiceDto)
         {
-            string query = "UPDATE Services SET ServiceName = @serviceName, ServiceStatus = @serviceStatus WHERE ServiceId = @serviceId";
+            string query = "Update Services Set ServiceName=@serviceName,ServiceStatus=@serviceStatus where ServiceID=@serviceID";
             var parameters = new DynamicParameters();
-            parameters.Add("@serviceId", serviceDto.ServiceId);
-            parameters.Add("@serviceName", serviceDto.ServiceName);
-            parameters.Add("@serviceStatus", serviceDto.ServiceStatus);
+            parameters.Add("@serviceName", updateServiceDto.ServiceName);
+            parameters.Add("@serviceStatus", updateServiceDto.ServiceStatus);
+            parameters.Add("@serviceID", updateServiceDto.ServiceId);
 
-            using (var connection = _context.CreateConnection())
+            using (var connectiont = _context.CreateConnection())
             {
-                await connection.ExecuteAsync(query, parameters);
+                await connectiont.ExecuteAsync(query, parameters);
             }
         }
     }

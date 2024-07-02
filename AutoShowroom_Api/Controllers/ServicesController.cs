@@ -6,43 +6,37 @@ namespace AutoShowroom_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServiceController : ControllerBase
+    public class ServicesController : ControllerBase
     {
         private readonly IServiceRepository _serviceRepository;
-
-        public ServiceController(IServiceRepository serviceRepository)
+        public ServicesController(IServiceRepository serviceRepository)
         {
             _serviceRepository = serviceRepository;
         }
-
         [HttpGet]
-        public async Task<IActionResult> ServiceList()
+        public async Task<IActionResult> GetServiceList()
         {
-            var values = await _serviceRepository.GetAllServiceAsync();
-            return Ok(values);
+            var value = await _serviceRepository.GetAllService();
+            return Ok(value);
         }
-
         [HttpPost]
         public async Task<IActionResult> CreateService(CreateServiceDto createServiceDto)
         {
-            _serviceRepository.CreateService(createServiceDto);
-            return Ok("Service başarılı bir şekilde eklendi.");
+            await _serviceRepository.CreateService(createServiceDto);
+            return Ok("Hizmet Kısmı Başarılı Bir Şekilde Eklendi");
         }
-
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteService(int id)
         {
-            _serviceRepository.DeleteService(id);
-            return Ok("Service başarılı bir şekilde silindi.");
+            await _serviceRepository.DeleteService(id);
+            return Ok("Hizmet Kısmı Başarılı Bir Şekilde Silindi");
         }
-
         [HttpPut]
         public async Task<IActionResult> UpdateService(UpdateServiceDto updateServiceDto)
         {
-            _serviceRepository.UpdateService(updateServiceDto);
-            return Ok("Service Başarılı Şekilde Güncellendi");
+            await _serviceRepository.UpdateService(updateServiceDto);
+            return Ok("Hizmet Kısmı Başarıyla Güncellendi");
         }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetService(int id)
         {

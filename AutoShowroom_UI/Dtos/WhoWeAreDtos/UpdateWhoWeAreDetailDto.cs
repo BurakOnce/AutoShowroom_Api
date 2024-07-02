@@ -1,4 +1,4 @@
-﻿namespace AutoShowroom_Api.Dtos.WhoWeAreDetailDtos
+﻿namespace AutoShowroom_UI.Dtos.WhoWeAreDtos
 {
     public class UpdateWhoWeAreDetailDto
     {
@@ -9,5 +9,3 @@
         public string Description2 { get; set; }
     }
 }
-
-

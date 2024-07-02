@@ -30,7 +30,7 @@ namespace AutoShowroom_Api.Controllers
             return Ok("Who We Are Detail başarılı bir şekilde eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {
             _whoWeAreRepository.DeleteWhoWeAreDetail(id);

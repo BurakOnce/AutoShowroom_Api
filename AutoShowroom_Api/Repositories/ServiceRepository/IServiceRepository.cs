@@ -5,11 +5,10 @@ namespace AutoShowroom_Api.Repositories.ServiceRepository
 {
     public interface IServiceRepository
     {
-        Task<List<ResultServiceDto>> GetAllServiceAsync();
-        void CreateService(CreateServiceDto serviceDto);
-        void DeleteService(int id);
-        void UpdateService(UpdateServiceDto serviceDto);
-
+        Task<List<ResultServiceDto>> GetAllService();
+        Task CreateService(CreateServiceDto createServiceDto);
+        Task DeleteService(int id);
+        Task UpdateService(UpdateServiceDto updateServiceDto);
         Task<GetByIdServiceDto> GetService(int id);
     }
 }
