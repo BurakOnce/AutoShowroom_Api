@@ -30,6 +30,16 @@ namespace AutoShowroom_Api.Repositories.ProductRepository
             }
         }
 
+        public async Task<List<ResultLast5ProductWithCategory>> GetLast5ProductAsync()
+        {
+            string query = "Select Top(5) ProductID,Title,Price,City,District,ProductCategory,CategoryName,Type,AdvertisementDate From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Order By ProductID Desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultLast5ProductWithCategory>(query);
+                return values.ToList();
+            }
+        }
+
         public async void ProductDealOfTheDayStatusChangeToFalse(int id)
         {
             string query = "Update Product Set DealOfTheDay=0 where ProductID=@productID";
