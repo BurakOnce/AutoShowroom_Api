@@ -2,13 +2,14 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Admin/Index.cshtml";
+    int count = 0;
 }
 
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Kategori Listesi</h6>
+                <h6 class="mb-4">İlan Listesi</h6>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -23,27 +24,39 @@
                                 <th scope="col">Sil</th>
                                 <th scope="col">Güncelle</th>
                                 <th scope="col">Sitede Gör</th>
+                                <th scope="col">Günün Fırsatı</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
+                                count++;
                                 <tr>
-                                    <th scope="row">@item.productId</th>
+                                    <th scope="row">@count</th>
                                     <td>@item.title</td>
                                     <td>@item.city</td>
                                     <td>@item.district</td>
-                                    <td>@item.categoryId</td>
+                                    <td>@item.categoryName</td>
                                     <td>@item.price</td>
                                     <td>@item.Type</td>
                                     <td><a href="/Product/DeleteProduct/@item.productId" class="btn btn-outline-danger">Sil</a></td>
                                     <td><a href="/Product/UpdateProduct/@item.productId" class="btn btn-outline-success">Güncelle</a></td>
-                                    <td><a href="/Product/ProductDetail/@item.productId" class="btn btn-outline-info">Sitede Gör</a></td>
+                                    <td><a href="/Product/ProductDetail/@item.productId" class="btn btn-outline-primary">Sitede Gör</a></td>
+                                    <td>
+                                        @if (item.dealOfTheDay == true)
+                                        {
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeToFalse/@item.productId" class="btn btn-outline-secondary">Pasif Yap</a>
+                                        }
+                                        @if (item.dealOfTheDay == false)
+                                        {
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeToTrue/@item.productId" class="btn btn-outline-warning">Aktif Yap</a>
+                                        }
+                                    </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Product/CreateProduct" class="btn btn-outline-info">Yeni İlan Girişi</a>
+                    <a href="/Product/CreateProduct/" class="btn btn-outline-info">Yeni İlan Girişi</a>
                 </div>
             </div>
         </div>

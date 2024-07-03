@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using AutoShowroom_UI.Dtos.WhoWeAreDtos;
+using AutoShowroom_UI.Dtos.ServiceDtos;
+
 
 namespace AutoShowroom_UI.ViewComponents.HomePage
 {
@@ -18,7 +20,7 @@ namespace AutoShowroom_UI.ViewComponents.HomePage
             var client2 = _httpClientFactory.CreateClient();
 
             var responseMessage1 = await client1.GetAsync("https://localhost:44337/api/WhoWeAreDetail");
-            var responseMessage2 = await client2.GetAsync("https://localhost:44337/api/Service");
+            var responseMessage2 = await client2.GetAsync("https://localhost:44337/api/Services");
 
             if (responseMessage1.IsSuccessStatusCode && responseMessage2.IsSuccessStatusCode) 
             {
@@ -26,7 +28,7 @@ namespace AutoShowroom_UI.ViewComponents.HomePage
                 var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
 
                 var value1 = JsonConvert.DeserializeObject<List<ResultWhoWeAreDetailDto>>(jsonData1);
-                var value2 = JsonConvert.DeserializeObject<List<ResultServicesDto>>(jsonData2);
+                var value2 = JsonConvert.DeserializeObject<List<ResultServiceDto>>(jsonData2);
 
                 ViewBag.Title = value1.Select(x => x.Title).FirstOrDefault();
                 ViewBag.Subtitle = value1.Select(x => x.Subtitle).FirstOrDefault();

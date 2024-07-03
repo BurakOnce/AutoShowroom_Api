@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using AutoShowroom_Api.Repositories.BottomGridRepositories;
 using AutoShowroom_Api.Repositories.CategoryRepository;
+using AutoShowroom_Api.Dtos.BottomGridDtos;
 
 namespace AutoShowroom_Api.Controllers
 {
@@ -15,12 +16,36 @@ namespace AutoShowroom_Api.Controllers
         {
             _bottomGridRepository = bottomGridRepository;
         }
-
         [HttpGet]
         public async Task<IActionResult> BottomGridList()
         {
-            var values = await _bottomGridRepository.GetAllBottomGridAsync();
+            var values = await _bottomGridRepository.GetAllBottomGrid();
             return Ok(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBottomGrid(CreateBottomGridDto createBottomGridDto)
+        {
+            await _bottomGridRepository.CreateBottomGrid(createBottomGridDto);
+            return Ok("Veri Başarılı Bir Şekilde Eklendi");
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBottomGrid(int id)
+        {
+            await _bottomGridRepository.DeleteBottomGrid(id);
+            return Ok("Veri Başarılı Bir Şekilde Silindi");
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdateBottomGrid(UpdateBottomGridDto updateBottomGridDto)
+        {
+            await _bottomGridRepository.UpdateBottomGrid(updateBottomGridDto);
+            return Ok("Veri Başarıyla Güncellendi");
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBottomGrid(int id)
+        {
+            var value = await _bottomGridRepository.GetBottomGrid(id);
+            return Ok(value);
         }
     }
 
