@@ -2,6 +2,7 @@ using AutoShowroom_Api.Models.DapperContext;
 using AutoShowroom_Api.Repositories.BottomGridRepositories;
 using AutoShowroom_Api.Repositories.BottomGridRepository;
 using AutoShowroom_Api.Repositories.CategoryRepository;
+using AutoShowroom_Api.Repositories.ContactRepositories;
 using AutoShowroom_Api.Repositories.EmployeeRepositories;
 using AutoShowroom_Api.Repositories.PopularLocationRepositories;
 using AutoShowroom_Api.Repositories.ProductRepository;
@@ -22,6 +23,7 @@ builder.Services.AddTransient<IBottomGridRepository, BottomGridRepository>();
 builder.Services.AddTransient<IPopularLocationRepository, PopularLocationRepository>();
 builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddTransient<IStatisticsRepository, StatisticsRepository>();
+builder.Services.AddTransient<IContactRepository, ContactRepository>();
 
 
 
