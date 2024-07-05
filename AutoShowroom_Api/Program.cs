@@ -8,6 +8,7 @@ using AutoShowroom_Api.Repositories.PopularLocationRepositories;
 using AutoShowroom_Api.Repositories.ProductRepository;
 using AutoShowroom_Api.Repositories.ServiceRepository;
 using AutoShowroom_Api.Repositories.StatisticsRepositories;
+using AutoShowroom_Api.Repositories.ToDoListRepositories;
 using AutoShowroom_Api.Repositories.WhoWeAreRepository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,7 @@ builder.Services.AddTransient<IPopularLocationRepository, PopularLocationReposit
 builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddTransient<IStatisticsRepository, StatisticsRepository>();
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
+builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
 
 
 
