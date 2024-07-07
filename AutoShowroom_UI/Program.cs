@@ -1,6 +1,9 @@
+using AutoShowroom_UI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
 
 // Add services to the container.
 builder.Services.AddHttpClient();
@@ -14,6 +17,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
     opt.Cookie.Name = "AutoShowroomJwt";
 });
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ILoginService, LoginService>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
