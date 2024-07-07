@@ -10,5 +10,8 @@ namespace AutoShowroom_Api.Repositories.ProductRepository
         void ProductDealOfTheDayStatusChangeToTrue(int id);
         void ProductDealOfTheDayStatusChangeToFalse(int id);
         Task<List<ResultLast5ProductWithCategory>> GetLast5ProductAsync();
+
+        Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAsync(int id);
+
     }
 }
