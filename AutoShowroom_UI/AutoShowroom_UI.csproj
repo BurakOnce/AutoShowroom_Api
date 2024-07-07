@@ -26,4 +26,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\AutoAgent\Data\" />
+    <Folder Include="Areas\AutoAgent\Models\" />
+  </ItemGroup>
+
 </Project>
