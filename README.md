@@ -5,7 +5,7 @@
 Bu proje, ASP.NET Core 8.0 kullanılarak geliştirilmiş bir araç ilanları e-ticaret web sitesidir. Kullanıcıların araç ilanlarını kolayca görüntüleyip inceleyebileceği bir platform sağlamakla kalmaz, aynı zamanda yönetici ve acenta kullanıcılarının siteyi etkili bir şekilde yönetebileceği kapsamlı araçlar sunar. Proje, yüksek performanslı SQL sorguları kullanılarak hızlı veri çekimi ve işlem yapılmasını sağlar. 
 
 
-Clean Code prensipleri ve SOLID tasarım ilkeleri benimsenerek yazılmış olan bu proje, bakımı kolay ve sürdürülebilir bir kod tabanı sunar. Ayrıca, kullanıcı deneyimini artırmak için responsive ve kullanıcı dostu bir arayüz tasarlanmıştır. Backend kısmı tamamlandığında, admin ve acenta kısımlarının da görüntüleri eklenecek ve sistemin tüm fonksiyonları eksiksiz bir şekilde sunulacaktır. Projenin ana hedeflerinden biri, hem kullanıcılar hem de yöneticiler için verimli, güvenli ve kullanıcı dostu bir platform oluşturmaktır.
+Clean Code prensipleri ve SOLID tasarım ilkeleri benimsenerek yazılmış olan bu proje, bakımı kolay ve sürdürülebilir bir kod tabanı sunar. Ayrıca, kullanıcı deneyimini artırmak için responsive ve kullanıcı dostu bir arayüz tasarlanmıştır. Projenin ana hedeflerinden biri, hem kullanıcılar hem de yöneticiler için verimli, güvenli ve kullanıcı dostu bir platform oluşturmaktır.
 
 
 ## Ana Sayfa
@@ -46,5 +46,12 @@ Clean Code prensipleri ve SOLID tasarım ilkeleri benimsenerek yazılmış olan 
 
 ## Admin Hizmetler
 ![Admin Hizmetler](https://github.com/BurakOnce/AutoShowroom_Api/blob/master/ss/admin-services.png)
+
+
+
+### Admin paneli için kullanılan hazır template
+https://themewagon.github.io/dashmin/
+
+
 
 
